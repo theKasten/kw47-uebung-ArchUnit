@@ -1,20 +1,20 @@
 package tictactoe.struktur;
 
 import annotations.AggregateRoot;
-import tictactoe.Main;
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.lang.ArchRule;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import tictactoe.TictactoeApplication;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 
 public class StrukturTests {
 
   private final JavaClasses klassen =
-          new ClassFileImporter().importPackagesOf(Main.class);
+          new ClassFileImporter().importPackagesOf(TictactoeApplication.class);
 
   @Test
   @DisplayName("Testet ob alles Private ist, das nicht mit aggregate root deklariert wurde")

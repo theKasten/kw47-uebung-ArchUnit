@@ -1,5 +1,7 @@
 package tictactoe.game;
 
+import annotations.AggregateRoot;
+
 import static java.util.stream.Collectors.groupingBy;
 
 
@@ -8,6 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+@AggregateRoot
 class Board {
 
   private Position pos(int row, int column) {
