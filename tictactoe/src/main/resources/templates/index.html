@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic-Tac-Toe</title>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../static/css/styles.css" th:href="@{css/styles.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="container p-5">
+
+
+    <header>
+        <h1>Tic-Tac-Toe</h1>
+    </header>
+    <main>
+        <section>
+            <p>Willkommen bei Tic-Tac-Toe Online. Sie können ein neues Spiel starten oder einem bestehenden Spiel
+                beitreten. Kopieren Sie dazu den Zugangscode, den Sie bekommen haben in das Eingabefeld.</p>
+        </section>
+        <section>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Neues Spiel erzeugen</h5>
+                            <p class="card-text">Sie erhalten nach der Erstellung einen Beitrittscode, mit dem andere
+                                Spieler:innen beitreten können.</p>
+                            <form method="post" action="starten">
+                                <div class="text-center">
+                                    <button class="btn btn-primary">Neues Spiel starten</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Einem Spiel beitreten</h5>
+                            <p class="card-text">Sie benötigen einen Beitrittscode.</p>
+                            <div class="text-center">
+                                <form class="row g-2" method="get" action="beitreten">
+                                    <div class="col-auto">
+                                        <label for="inputCode" class="visually-hidden">Beitrittscode</label>
+                                        <input type="text" class="form-control" id="inputCode" name="gameId" placeholder="Beitrittscode">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-primary mb-3">Beitreten</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</div>
+</body>
+</html>

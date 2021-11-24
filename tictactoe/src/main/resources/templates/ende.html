@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic-Tac-Toe</title>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../static/css/styles.css" th:href="@{css/styles.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container p-5">
+
+
+    <header>
+        <h1>Tic-Tac-Toe</h1>
+    </header>
+    <main>
+
+        <section>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Spiel beendet</h5>
+                            <p class="card-text">Das Spiel ist beendet.
+                                Gewonnen hat <strong th:text="${game.winner().orElse('Niemand')}">X</strong>
+                            <div class="text-center">
+                                <a href="/">
+                                    <button class="btn btn-primary">Zur Startseite</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic-Tac-Toe</title>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+  <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../static/css/styles.css" th:href="@{css/styles.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container p-5">
+
+
+    <header>
+        <h1>Tic-Tac-Toe</h1>
+    </header>
+    <main>
+        <section>
+            <p class="mb-5" th:if="${player.equals('X')}">Bitte gib den folgenden Beitrittscode
+                <!-- Der Span beinhaltet den Schlüssel für das Spiel -->
+                <input type="text" th:value="${game.id()}"> an deinen Mitspieler
+                oder deine Mitspielerin weiter.
+            </p>
+            <div class="text-center">
+                <p class="alert alert-success" th:if="${active}">Du bist am Zug</p>
+                <p class="alert alert-danger" th:if="${!active}">Du bist nicht am Zug und musst warten!</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <table th:remove="all-but-first">
+                        <tr th:remove="all-but-first" th:each="row: ${#numbers.sequence(0,2)}">
+                            <td th:each="column: ${#numbers.sequence(0,2)}">
+                                <form method="post" action="ziehen" th:if="${active}">
+                                    <!-- Der Schlüssel muss mit Thymeleaf ersetzt werden -->
+                                    <input type="hidden" name="gameId" th:value="${game.id()}">
+                                    <input type="hidden" name="player" th:value="${player}">
+                                    <input type="hidden" name="row" th:value="${row}">
+                                    <input type="hidden" name="column" th:value="${column}">
+                                    <!-- Der Text muss mit Thymeleaf ersetzt werden -->
+                                    <!-- Das Disabled Attribut muss gesetzt werden, wenn das Feld belegt ist -->
+                                    <button class="btn btn-dark p-5" type="submit"
+                                            th:text="${game.getSymbolAtPosition(row,column)}"
+                                            th:disabled="${!game.validMove(row,column)}">--</button>
+                                </form>
+                                <button class="btn btn-secondary p-5"  th:if="${!active}" th:text="${game.getSymbolAtPosition(row,column)}"
+                                        disabled="disabled">X</button>
+
+                            </td>
+                            <td>
+                                <button class="btn btn-dark p-5"  type="submit" disabled="disabled">O</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-dark p-5"  type="submit">--</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="btn btn-dark p-5"  type="submit">--</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-dark p-5" type="submit">--</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-dark p-5" type="submit" disabled="disabled">O</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="btn btn-dark p-5" type="submit" disabled="disabled">X</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-dark p-5" type="submit">--</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-dark p-5" type="submit">--</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+</div>
+<script th:if="${!active}">
+    // Supereinfacher Hack, damit die Seite alle paar Sekunden neu lädt
+    // Fur den Moment ist das gut genug
+    setTimeout(function(){
+        window.location.reload(1);
+    }, 5000);
+</script>
+</body>
+</html>

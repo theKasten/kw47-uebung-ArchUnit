@@ -1,0 +1,13 @@
+spring:
+  flyway:
+    schemas: ttt
+    create-schemas: true
+    url: jdbc:mariadb://localhost:3312/
+    user: root
+    password: iamgroot
+  datasource:
+    url: jdbc:mariadb://localhost:3312/ttt
+    username: root
+    password: iamgroot
+
+
